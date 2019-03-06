@@ -17,4 +17,20 @@ Para entender un poco mejor este proceso se proporciona el siguiente esquema:
 
 ![Html](capturas/2.png)
 
+Aquí vemos como el servidor se une a un puerto TCP. Cualquier número de clientes pueden conectarse al puerto vinculado.
+Pero todavía nuestro programa no hace nada con la coneción. Para ello, vamos e enviar información al cliente. En el siguiente fichero se muestra cómo se lleva a cabo esta tarea. Se ve como se utilizan los módulos fs y net. Si el usuario no proporciona un archivo del que escuchar se lanza un error, si lo proporciona este es el tercer argumento de process.argv recogido en la constante filename. A continuación, se observa como funciona la función callback. Para empezar nos informa de que la conexión entre cliente-servidor se ha establecido. Después escucha los cambios realizados en el archivo filename proporcionado, enviándose información de cambio al cliente usando connection.write. Para finalizar escucha al evento de cierre de la conexión. 
+
+![Html](capturas/3.png)
+
+El programa net-watcher se prueba de la siguiente manera:
+
+![Html](capturas/4.png)
+
+En la primera terminal de la izquierda se ejecuta el servicio, en la del medio el cliente y en la de la derecha se activarán los cambios en el archivo del que se escucha.
+Esta configuración creada se describe en la siguiente imagen, en la que el proceso net-watcher vincula un puerto TCP y escucha a un archivo.
+
+![Html](capturas/5.png)
+
+Se pueden conectar múltiples usuarios y recibir actualizaciones simultáneamente. 
+Los sockets TCP soon útiles para la comunicación entre equipos conectados en red.
 
