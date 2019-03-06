@@ -38,3 +38,13 @@ Vamos a ver ahora cómo se escucha en los sockets de Unix. En este caso, para co
 
 ![Html](capturas/6.png)
 
+Ahora diseñaremos e implementaremos un protocolo para definir cómo se comunican los extremos en un sistema. Dicho protocolo se basará en pasar mensajes JSON a través de TCP. Así, implementaremos  los extremos del cliente y del servidor que usen este protocolo basado en JSON.
+El servicio net-watcher envía dos tipos de mensajes que necesitamos convertir a JSON: 
+-Al establecer la conexión por primera vez, el cliente recibe la cadena.
+-Cuando el archivo de destino cambia, el cliente recibe una cadena.
+Se codificará el primer tipo de mensaje de la siguiente manera:
+{​"type"​:​"watching"​,​"file"​:​"target.txt"​}
+El campo tipo indica que se trata de un mensaje de observación, el campo file tiene el archivo que está siendo escuchado ahora.
+
+Se codificará el segundo tipo de mensaje de la siguiente manera:{​"type"​:​"changed"​,​"timestamp"​:1358175733785}
+El campo tipo anuncia que el archivo de destino ha cambiado, el campo timestamp contiene el valor entero que representa el número de milisegundos desde el 1 de enero de 1970
