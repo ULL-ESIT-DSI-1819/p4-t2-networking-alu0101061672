@@ -34,3 +34,7 @@ Esta configuración creada se describe en la siguiente imagen, en la que el proc
 Se pueden conectar múltiples usuarios y recibir actualizaciones simultáneamente. 
 Los sockets TCP soon útiles para la comunicación entre equipos conectados en red.
 
+Vamos a ver ahora cómo se escucha en los sockets de Unix. En este caso, para conectar un cliente se especifica la opción -U para usar el fichero socket.
+
+![Html](capturas/6.png)
+
