@@ -110,3 +110,9 @@ O también podría usarse el método connect:
 
 ​ 	​const​ client = require(​'./lib/ldj-client.js'​).connect(networkStream);
 
+Modificaremos el cliente para usar nuestro módulo personalizado. Creamos el archivo net-watcher-json-client para crear coneciones de cliente de socket. En este caso, el programa se basa en el módulo ldj-client para producir eventos de mensajes.
+Aquí vemos la ejecución del programa para comprobar que funciona correctamente:
+
+![Html](capturas/13.png)
+
+
