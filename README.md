@@ -95,4 +95,18 @@ LSJClient es una clase que tiene un constructor. Llama a super para invocar la f
 ​ 	  ​// Take action for this message.​
 ​ 	});
 
-Ahora vamos a emitir eventos de mensaje ya que la jerarquía de clases está correctamente.
+Ahora vamos a emitir eventos de mensaje ya que la jerarquía de clases está correctamente. Además, vamos a utilizar el parámetro stream en el LDJClient para recuperar y almacenar la entrada. El objetivo es tomar los datos entrantes y convertirlos en eventos de mensaje que contengan los objetos de mensaje analizados.
+
+
+En este ejemplo comenzamos llamando a super y configuramos una variable de tipo cadena (string) llamada buffer para capturar los datos entrantes. Para manejar los eventos de datos usamos stream.on. A continuación viene el contrlador de eventos, donde agregamos datos sin procesar al final del buffer y buscamos los mensajes completos desde el inicio. Cada mensaje se envía a través de JSON.parse y es emitida por el LSJClient como un eevento de mensaje a través de this.emit.
+De esta manera solucionamos el problema del manejo de los mensajes divididos.
+Ahora debemos colocar esta clase en un módulo Node.js para que nuestro cliente pueda usarla. Creamos el fichero ldj-client.js en el directorio lib. En este archivo se agrega un método estático llamado connect para que no se aplique a instancias individuales sino a toda la clase. El objeto module.exports es el puente entre el código del módulo y el mundo exterior.
+El código para usar el LDJ módulo sería:
+
+	​const​ LDJClient = require(​'./lib/ldj-client.js'​);
+​  	 ​const​ client = ​new​ LDJClient(networkStream);
+
+O también podría usarse el método connect:
+
+​ 	​const​ client = require(​'./lib/ldj-client.js'​).connect(networkStream);
+

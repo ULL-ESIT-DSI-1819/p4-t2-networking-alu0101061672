@@ -19,4 +19,4 @@ var shell = require("gulp-shell");
  
   gulp.task("mkcol", shell.task("curl -X MKCOL http://localhost:8000/file.txt"));
  
-  gulp.task("documenta", shell.task("documentation build file_server.js -f md > doc1.md"));
+  gulp.task("documenta", shell.task("documentation build ldj-client.js -f md > doc1.md"));
