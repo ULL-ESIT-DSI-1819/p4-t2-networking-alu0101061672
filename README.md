@@ -82,3 +82,17 @@ En este fichero enviamos el primer fragmento de inmediato y configuramos un temp
 
 El error producido se debe a que el mensaje JSON no fue válido por no ser completo. Se ha intentado enviar la mitad de un mensaje a JSON.parse, pero solo espera cadenas JSON completas y con el formato correcto como entrada.
 
+Tenemos que hacer que el cliente almacene los datos entrantes en los mensajes y que maneje cada mensaje cuando llegue.
+Vamos a crear un módulo para manejar el buffer de entrada para recibir mensajes completos de manera confiable. 
+Ahora configuraremos LDJClient para heredar de EventEmitter:
+
+![Html](capturas/12.png)
+
+LSJClient es una clase que tiene un constructor. Llama a super para invocar la función constructora de EventEmitter. 
+
+​ 	​const​ client = ​new​ LDJClient(networkStream);
+​ 	client.on(​'message'​, message => {
+​ 	  ​// Take action for this message.​
+​ 	});
+
+Ahora vamos a emitir eventos de mensaje ya que la jerarquía de clases está correctamente.
