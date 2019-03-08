@@ -47,4 +47,31 @@ Se codificará el primer tipo de mensaje de la siguiente manera:
 El campo tipo indica que se trata de un mensaje de observación, el campo file tiene el archivo que está siendo escuchado ahora.
 
 Se codificará el segundo tipo de mensaje de la siguiente manera:{​"type"​:​"changed"​,​"timestamp"​:1358175733785}
-El campo tipo anuncia que el archivo de destino ha cambiado, el campo timestamp contiene el valor entero que representa el número de milisegundos desde el 1 de enero de 1970
+El campo tipo anuncia que el archivo de destino ha cambiado, el campo timestamp contiene el valor entero que representa el número de milisegundos desde el 1 de enero de 1970.
+Vamos a modificar el servicio net-watcher y crear programas clientes que recibirán e interpretarán estos mensajes.
+Para codificar objetos de mensaje usamos JSON.stringify, ya que toma un objeto de JavaScript y devuelve una cadena que contiene una representación serializada de ese objeto en forma JSON.
+Al modificar las líneas para usar JSON.stringfy y ejecutarlo nos da la siguiente salida:
+
+![Html](capturas/7.png)
+
+Vamos a escribir un programa cliente para recibir mensajes JSON de nuestro programa net-watcher-json-service.
+Se utiliza el net.connect para crear una conexión de cliente al puerto 60300 de localhost y espera por los datos. Cada vez que ocurre un evento de datos, la callback toma el objeto, analiza el mensaje JSON y registra el mensaje.
+
+![Html](capturas/8.png)
+
+Hay que considerar que sucede cuando finaliza la conexión o si no se puede conectar. Este programa no tiene en cuenta eventos de error. Además, hay que abarcar el problema de los límites de los mensajes.
+Desarrollaremos una prueba para nuestros programas de cliente y servidor. Crearemos un servidor simulado mientras exponemos los fallos en el cliente.
+Actualmente en nuestro programa los límites del evento de datos coinciden exactamente con los límites del mensaje.
+Nuestro programa de cliente analiza cada mensaje enviando el contenido de datos directamente a JSON.parse en las sentencias:
+    
+    client.on('data', data => {
+     const message = JSON.parse(data);
+    }
+
+Pero hay que considerar que un mensaje pueda llegar dividido en dos eventos de datos separados como se muestra en la siguiente imagen:
+
+![Html](capturas/9.png)
+
+Vamos a crear un servicio de prueba que envíe un mensaje dividido para saber como responde el cliente. Para ello implementaremos un servicio de prueba que divide un mensaje a propósito en múltiples partes.
+
+
