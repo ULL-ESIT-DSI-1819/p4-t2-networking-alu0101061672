@@ -74,4 +74,11 @@ Pero hay que considerar que un mensaje pueda llegar dividido en dos eventos de d
 
 Vamos a crear un servicio de prueba que envíe un mensaje dividido para saber como responde el cliente. Para ello implementaremos un servicio de prueba que divide un mensaje a propósito en múltiples partes.
 
+![Html](capturas/10.png)
+
+En este fichero enviamos el primer fragmento de inmediato y configuramos un temporizador para enviar el segundo fragmento con un breve retraso. La función setTimeout toma dos parámetros, una función a invocar y una cantidad de tiempo en milisegundos. Esto significa que después de una cantidad de tiempo especificada se llamará a la función. Cuando la conexión finaliza se usa clearTimeout para cancelar la programación de la callback.
+
+![Html](capturas/11.png)
+
+El error producido se debe a que el mensaje JSON no fue válido por no ser completo. Se ha intentado enviar la mitad de un mensaje a JSON.parse, pero solo espera cadenas JSON completas y con el formato correcto como entrada.
 
