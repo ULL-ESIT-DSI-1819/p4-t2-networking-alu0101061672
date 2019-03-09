@@ -128,7 +128,34 @@ Al instalarlo tenemos realizada la instalación y el archivo package.json consta
 
 ![Html](capturas/15.png)
 
+Ahora desarrollaremos una prueba unitaria, utiizando Mocha, para la clase LDJClient y usaremos npm para ejecutar un conjunto de pruebas.
+Creamos un directorio test para tener el código relacionado con pruebas. Creamos un archivo en este directorio llamado ldj-client-test.js con el siguiente contenido: 
 
+![Html](capturas/16.png)
 
-Ahora desarrollaremos una prueba unitaria para la clase LDJClient y usaremos npm para ejecutar un conjunto de pruebas.
+Para comenzar, incorporamos los módulos necesarios, incluido el módulo assert que contiene funciones útiles para comparar valores.
+Utilizamos el método de descripción de Mocha para crear un contexto con el nombre para nuestras pruebas con LDJClient. El segundo argumento es una función que contiene el contenido de la prueba. Dentro de esta declaramos dos variables, una para la instancia LDJClient del cliente y otra para el stream EventEmitter subyacente. Añadimos nuevas instancias a ambas variables en beforeEach.
+Ahora comprobamos que se realiza el comportamiento específico de la clase.
+En el cuerpo de la prueba configuramos un controlador de eventos de mensajes en el cliente. En él, se utiliza el método deepEqual para confirmar que lo que recibimos coincide con lo que esperamos recibir y, luego emitimos un evento de datos.
 
+Para poder ejecutar las pruebas de Mocha hay que actualizar la siguiente entrada al archivo package.json:
+
+	​"scripts"​: {
+​ 	  ​"test"​: ​"mocha"​
+​     },
+
+Al ejecutar esta prueba obtenemos la siguiente salida:
+
+![Html](capturas/17.png)
+
+Vamos a modificar el fichero lsj-client-test.js para dividir el mensaje en dos partes para ser emitidas por el stream una después de otra. El uso del método process.nextTick permite programar el código como una callback para que se ejecute tan pronto como finalice el código actual.
+Para establecer el tiempo de espera de Mocha para toda la ejecución se utiliza el indicador --timeout para especificar el tiempo de espera en milisegundos. Si se establece en 0 se desactiva por completo.
+Si se desea establecer un tiempo de espera específico para una prueba en particular se puede llamar al método timeout en el objeto devuelto por el método it de Mocha como se indica a continuación:
+
+	it(​'should finish within 5 seconds'​, done => {
+​ 	  setTimeout(done, 4500);  ​//      Call done after 4.5 seconds.​
+​ 	 }).timeout(5000);
+
+Como vemos al ejecutar de nuevo la prueba funciona correctamente:
+
+![Html](capturas/18.png)
