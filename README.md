@@ -115,4 +115,20 @@ Aquí vemos la ejecución del programa para comprobar que funciona correctamente
 
 ![Html](capturas/13.png)
 
+#### Mocha
+
+Vamos a desarrollar pruebas unitarias con Mocha siguiendo el estilo de desarrollo dirigido por el comportamiento (BDD).
+
+Instalamos Mocha y se comprueba que esté instalado.
+Primero creamos un archivo package.json predeterminado con el comando npm init -y.
+
+![Html](capturas/14.png)
+
+Al instalarlo tenemos realizada la instalación y el archivo package.json consta con estos datos:
+
+![Html](capturas/15.png)
+
+
+
+Ahora desarrollaremos una prueba unitaria para la clase LDJClient y usaremos npm para ejecutar un conjunto de pruebas.
 
