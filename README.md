@@ -159,3 +159,11 @@ Si se desea establecer un tiempo de espera específico para una prueba en partic
 Como vemos al ejecutar de nuevo la prueba funciona correctamente:
 
 ![Html](capturas/18.png)
+
+En el desarrollo de esta práctica se ha llevado a cabo la integración continua con Travis. A continuación se muestra el badge incluido en el README.md:
+
+![Html](capturas/19.png)
+
+Y se ve como se ha ido comprobando con Travis el correcto funcionamiento de nuestro programa:
+
+![Html](capturas/20.png)
