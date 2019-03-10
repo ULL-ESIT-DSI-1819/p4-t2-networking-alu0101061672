@@ -3,7 +3,7 @@ var shell = require('gulp-shell')
 
 gulp.task("server", shell.task("node net-watcher.js target.txt"));
 
-gulp.task("client", shell.task("​​node net-watcher-ldj-client.js​"));
+gulp.task("client", shell.task("​​node ldj-client.js​"));
 
 gulp.task("lint", shell.task("jshint *.js **/*.js"));
 
