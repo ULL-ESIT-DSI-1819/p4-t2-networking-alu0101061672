@@ -7,7 +7,7 @@ gulp.task("client", shell.task("​​node net-watcher-ldj-client.js​"));
 
 gulp.task("lint", shell.task("jshint *.js **/*.js"));
 
-gulp.task("documenta", shell.task("documentation build lsj-client.js -f md > doc2.md"));
+gulp.task("documenta", shell.task("documentation build networking/lib/ldj-client.js -f md > doc1.md"));
 
 gulp.task("test", shell.task("npm test"));
 

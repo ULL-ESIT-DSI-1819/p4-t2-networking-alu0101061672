@@ -6,8 +6,14 @@ const EventEmitter = require('events').EventEmitter;
  * @name LDJClient que extiende de la clase EventEmitter
  */
 class LDJClient extends EventEmitter {
+
+  /**
+ * Constructor de la clase.
+ * @name constructor
+ * @param {any} stream stream
+ */
   constructor(stream) {
-    //Make the test pass by modifying the constructor.
+    /** Make the test pass by modifying the constructor. */
     if (stream === null)
     throw new Error('Parámetro stream nulo');
 
@@ -27,7 +33,7 @@ class LDJClient extends EventEmitter {
         boundary = buffer.indexOf('\n');
       }
     });
-    //Update LDJClient to listen for close and process the remainder of the buffer.
+    /** Update LDJClient to listen for close and process the remainder of the buffer. */
     stream.on('close', () => {
       let boundary = buffer.indexOf('}');
       if (boundary !== -1) {
@@ -43,7 +49,11 @@ class LDJClient extends EventEmitter {
       this.emit('close');
     })
   }
-
+  /**
+   * Para conectarse el cliente.
+   * @param {any} stream stream
+   * @returns {LDJClient} objeto de la clase
+  */
   static connect(stream) {
     return new LDJClient(stream);
   }
