@@ -167,3 +167,8 @@ En el desarrollo de esta práctica se ha llevado a cabo la integración continua
 Y se ve como se ha ido comprobando con Travis el correcto funcionamiento de nuestro programa:
 
 ![Html](capturas/20.png)
+
+Se han ido añadiendo ejemplos de pruebas a lo largo del tutorial y ficheros de documentación como se puede observar:
+
+![Html](capturas/21.png)
+
