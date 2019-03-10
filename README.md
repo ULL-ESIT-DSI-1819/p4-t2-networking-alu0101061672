@@ -174,8 +174,13 @@ Se han ido añadiendo ejemplos de pruebas a lo largo del tutorial y ficheros de 
 
 Se ha añadido un fichero gulpfile.js para facilitar la ejecución de las tareas.
 Por último, se han realizado los ejercicios propuestos en los ficheros ejercicio.js y ldj-client.js.
+
 Para completar este tutorial voy a responder las preguntas teóricas de los ejercicios:
+
 -Si los datos entrantes no son del formato JSON se produce un error. Esto se debe a que se espera un formato JSON y al no serlo se produce un fallo y se para el programa.
+
 -En una prueba cuando enviamos datos que no son del formato JSON se produce un fallo como se dijo anteriormente debido a que se espera el formato JSON y no cualquier otro.
+
 -No se produce ningún fallo si no se incluyera el salto de línea en el último evento de datos. Esto se debe a que no se añadiría el salto de línea pero seguiría cumpliendo con el formato JSON esperado.
+
 -LDJClient debe emitir un evento de cierre cuando se desconecta para procesar el resto del buffer. Debería hacerlo siempre pero sobretodo si el buffer no ha sido procesado completamente.
