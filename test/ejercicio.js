@@ -28,7 +28,7 @@ describe('LDJClient', () => {
     stream.emit('data', '{"foo":');
     process.nextTick(() => stream.emit('data', '"bar"}\n'));
     //A unit test for a single message that is split over two (or more) data events from the stream.   
-    process.nextTick(() => stream.emit('data', '\n'));
+ //   process.nextTick(() => stream.emit('data', '\n'));
   });
   //A unit test that passes in null to the LDJClient constructor and asserts that an error is thrown.
   it('Se lanzará una excepción si se pasa un stream nulo al constructor', done => {
