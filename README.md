@@ -148,7 +148,7 @@ Al ejecutar esta prueba obtenemos la siguiente salida:
 
 ![Html](capturas/17.png)
 
-Vamos a modificar el fichero lsj-client-test.js para dividir el mensaje en dos partes para ser emitidas por el stream una después de otra. El uso del método process.nextTick permite programar el código como una callback para que se ejecute tan pronto como finalice el código actual.
+Vamos a modificar el fichero ldj-client-test.js para dividir el mensaje en dos partes para ser emitidas por el stream una después de otra. El uso del método process.nextTick permite programar el código como una callback para que se ejecute tan pronto como finalice el código actual.
 Para establecer el tiempo de espera de Mocha para toda la ejecución se utiliza el indicador --timeout para especificar el tiempo de espera en milisegundos. Si se establece en 0 se desactiva por completo.
 Si se desea establecer un tiempo de espera específico para una prueba en particular se puede llamar al método timeout en el objeto devuelto por el método it de Mocha como se indica a continuación:
 
